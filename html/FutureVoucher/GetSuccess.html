@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://media.youshu.cc/static/css/style.css"/>
+    <link rel="stylesheet" href="/napi/stylesheets/futurevoucher/getsuccess.css"/>
+    <script type="text/javascript">
+        (function(){
+            function resizeBaseFontSize(){
+                var rootHtml = document.documentElement,
+                    deviceWidth = rootHtml.clientWidth;
+                if(deviceWidth > 800){
+                    deviceWidth = 800;
+                }
+                rootHtml.style.fontSize = deviceWidth /37.5 + "px";
+            }
+            resizeBaseFontSize();
+            window.addEventListener("resize", resizeBaseFontSize, false);
+            window.addEventListener("orientationchange", resizeBaseFontSize, false);
+        })();
+    </script>
+    <style>
+        .cf99 {
+            background-color: #f99b2d;
+        }
+        .ccc {
+            background-color: #ccc;
+        }
+        .f57 {
+            background-color: #f57060;
+        }
+
+    </style>
+    <title>领取成功</title>
+</head>
+<body>
+<section class="succ">
+    <p class="tips">恭喜你，领取成功</p>
+    <div class="voucherBox">
+        <div class="voucher">
+            <!--
+            type1:商品专用券
+            type2:充值券
+            type3:满减券
+            type4:课程专用
+            -->
+            <p class="type">商品专用券</p>
+            <div class="content">
+                <div class="cont">
+                    <label class="left">课程</label>
+                    <label class="right">思维训练课</label>
+                    <div class="intro">
+                        <p class="money"><span class="price">100</span>元</p>
+                        <p class="course">用得上的商业课用得上的商业课用得上的商业课</p>
+                        <p class="expiryDate">有效期至：2017-08-25</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="checkBox">
+        <a class="checkBtn" href="http://readooapi.youshu.cc/FwhWeChat/entry?msg=charge">去“我的账户”查看</a>
+    </div>
+</section>
+
+<script src="/napi/javascripts/jquery.min.js"></script>
+<script>
+function getid(name){
+    var url = location.href.split("?")[1].split("&");
+    var text = "";
+    for(var i=0;i<url.length;i++){
+        var id= location.href.split("?")[1].split("&")[i].indexOf("=");
+        var nick = location.href.split("?")[1].split("&")[i].substring(0,id);
+        if(name== nick){
+            text = location.href.split("?")[1].split("&")[i].substring(id+1)
+        }
+    }
+    return text;
+}
+function formatDate(datatime) {
+    if(datatime){
+        var date = new Date(parseInt(datatime*1000));
+        var year=date.getFullYear();
+        var month=date.getMonth()+1;
+        var dateD=date.getDate();
+        return year + "-" + month + "-" + dateD;
+    }
+}
+    $(function(){
+
+        var coupon = decodeURIComponent(getid('coupon'));
+        console.log(coupon,typeof coupon)
+
+ 
+        var data = JSON.parse(coupon);
+        switch (data.coupon_type) {
+            case "充值券":
+                $(".type").addClass("type2").show();
+                break;
+            case "商品专用券":
+                $(".type").addClass("type1").show();
+
+                break;
+            case "满减券":
+                $(".type").addClass("type3").show();
+
+                break;
+            default:
+                
+                break;
+        }
+        if (data.coupon_label_type == 'label') {
+            $(".cont").find(".course").html(data.coupon_label)
+            $(".cont").find(".money").hide();
+        } else if (data.coupon_label_type == 'money') {
+            $(".cont").find(".price").html(data.coupon_label)
+            $(".cont").find(".course").hide();
+        }
+
+        if (data.type == "10" || data.type == "50" || data.type == "60") {
+            $(".voucher").addClass('cf99')
+        } else {
+            $(".voucher").addClass('f57')
+        }
+
+        if (data.product_type != "") {
+            $(".cont").find(".left").html(data.product_type)
+        } else {
+            $(".cont").find(".left").hide();
+        }
+
+        if (data.product_label != "") {
+            $(".cont").find(".right").html(data.product_label)
+        } else {
+            $(".cont").find(".right").hide();
+        }
+        $(".cont").find(".expiryDate").html('有效期至：'+formatDate(data.expiration_date))
+                            
+    })
+</script>
+</body>
+</html>

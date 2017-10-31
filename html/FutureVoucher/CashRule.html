@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://media.youshu.cc/static/css/style.css"/>
+    <link rel="stylesheet" href="/napi/stylesheets/futurevoucher/cashrule.css"/>
+    <title>兑换规则</title>
+    <script type="text/javascript">
+        (function(){
+            function resizeBaseFontSize(){
+                var rootHtml = document.documentElement,
+                    deviceWidth = rootHtml.clientWidth;
+                if(deviceWidth > 800){
+                    deviceWidth = 800;
+                }
+                rootHtml.style.fontSize = deviceWidth /37.5 + "px";
+            }
+            resizeBaseFontSize();
+            window.addEventListener("resize", resizeBaseFontSize, false);
+            window.addEventListener("orientationchange", resizeBaseFontSize, false);
+        })();
+    </script>
+</head>
+<body>
+<article class="rule">
+    <ul>
+        <li>
+            <h1>什么是兑换码</h1>
+            <p>兑换码是由有书官方制作发售，用来兑换有书共读App内电子书、共读计划和订阅课程等产品</p>
+        </li>
+        <li>
+            <h1>如何获得兑换码</h1>
+            <p>你可以在有书优选商城购买，关注公众号 有书优选<br>(微信号：youshuyouxuan）即可找到</p>
+        </li>
+        <li>
+            <h1>注意事项</h1>
+            <p>兑换码一经售出，不支持退款<br>兑换码在购买时候会注明有效期，请在有效期内使用<br>如有问题，请联系我们。邮箱：hi@youshu.cc</p>
+        </li>
+    </ul>
+</article>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://media.youshu.cc/static/css/style.css"/>
+    <link rel="stylesheet" href="/napi/stylesheets/futurevoucher/voucherlist.css"/>
+    <link rel="stylesheet" href="/napi/stylesheets/alertBox.css"/>
+    <script type="text/javascript">
+        (function(){
+            function resizeBaseFontSize(){
+                var rootHtml = document.documentElement,
+                    deviceWidth = rootHtml.clientWidth;
+                if(deviceWidth > 800){
+                    deviceWidth = 800;
+                }
+                rootHtml.style.fontSize = deviceWidth /37.5 + "px";
+            }
+            resizeBaseFontSize();
+            window.addEventListener("resize", resizeBaseFontSize, false);
+            window.addEventListener("orientationchange", resizeBaseFontSize, false);
+        })();
+    </script>
+    <style>
+        .cf99 {
+            background-color: #f99b2d;
+        }
+        .ccc {
+            background-color: #ccc;
+        }
+        .f57 {
+            background-color: #f57060;
+        }
+
+    </style>
+    <title>卡券列表</title>
+</head>
+<body>
+<section class="listBox" id="app">
+    <small class="rule"><a href="/napi/futurevoucher/cashrule">使用规则</a></small>
+    <ul class="voucherBox">
+        <!--type1:商品专用券
+            type2:充值券
+            type3:满减券
+            type4:课程专用-->
+        <li class="voucher" :class="getClass(item)" v-for="item in lists" >
+            <p class="type type1" v-if="item.coupon_type == '商品专用券'"></p>
+            <p class="type type2" v-if="item.coupon_type == '充值券'"></p>
+            <p class="type type3" v-if="item.coupon_type == '满减券'"></p>
+            <div class="content">
+                <div class="cont">
+                    <label class="left" v-if="item.product_type">{{item.product_type}}</label>
+                    <label class="right" v-if="item.product_label">{{item.product_label}}</label>
+                    <div class="intro">
+                        <p class="money" v-if="item.coupon_label_type == 'money'"><span class="price">{{item.coupon_label}}</span>元</p>
+                        <p class="course" v-if="item.coupon_label_type == 'label'">{{item.coupon_label}}</p>
+                        <p class="expiryDate">有效期至：{{item.expiration_date}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="state" v-if="item.status == 400 || item.status == 300">
+                <img v-if="item.status == 400" src="http://media.youshu.cc/readwith/media/picture/59afe3a888b92.png" alt="已过期">
+                <img v-if="item.status == 300" src="http://media.youshu.cc/readwith/media/picture/59afe3a89414c.png" alt="已使用">
+            </div>
+        </li>
+    </ul>
+</section>
+<div class="alertBox alertBox2" style="display: none">
+    <div class="alert-box">
+        <p class="close"><img src="http://media.youshu.cc/readwith/media/picture/591e6dc7d63bd.jpg" alt=""></p>
+        <p class="tips">恭喜您，加入成功</p>
+        <div class="centerBtnBox">
+            <p class="bigBtn lineGreen">确定</p>
+        </div>
+    </div>
+</div>
+<script src="/napi/javascripts/vue.min.js"></script>
+<script src="/napi/javascripts/jquery.min.js"></script>
+<script>
+
+    $(function(){
+
+        function tips(msg) {
+            $(".alertBox").find('.tips').html(msg)
+            $('.alertBox2').show();
+        }
+
+        function formatDate(datatime) {
+            if(datatime){
+                var date = new Date(parseInt(datatime*1000));
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                var dateD=date.getDate();
+                return year + "-" + month + "-" + dateD;
+            }
+        }
+        console.log(formatDate(1505491200))
+
+        $('.bigBtn, .microBtn,.close').click(function () {
+            $('.alertBox').hide();
+        });
+        
+        var user_id = getCookie('HTTP_X_YS_UID');
+        var token = getCookie('HTTP_X_YS_USER_TOKEN');
+
+        if (!user_id) {
+            window.location.href = 'http://readooapi.youshu.cc/FwhWeChat/entry?msg=WeChatAuth&callback=http://'+window.location.host+'/napi/futurevoucher/list'
+        }
+
+        new Vue({
+            el: '#app',
+            data: {
+                lists: []
+            },
+            created: function() {
+                var self = this;
+                $.ajax({
+                    url: 'http://readooapi.youshu.cc/Coupon/myCouponList',
+                    type: 'POST',
+                    data: {'user_id': user_id},
+                    dataType: 'json',
+                    success: function(res) {
+                        console.log(res)
+                        
+                        if (res.code ==1) {
+                            self.lists = res.data.coupon_list;
+                            self.lists.forEach( function(ele, index) {
+                                ele.expiration_date = formatDate(ele.expiration_date);
+                            });
+                        } else {
+                            tips(res.msg)
+                        }
+                    }
+                })
+            },
+            methods: {
+                getClass: function(item) {
+                    if (item.status == 100 || item.status == 200) {
+                        if (item.type == "10" || item.type == "50" || item.type == "60") {
+                            return 'cf99'
+                        } else {
+                            return 'f57'
+                        }
+                    } else {
+                        
+                        return 'ccc';
+                    }
+                }
+            }
+        })
+
+        
+    })
+function getCookie(c_name) {
+    if (document.cookie.length>0){ 
+        var c_start=document.cookie.indexOf(c_name + "=")
+        if (c_start!=-1){ 
+            c_start=c_start + c_name.length+1 
+            var c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+        } 
+    }
+    return ""
+}
+</script>
+</body>
+</html>

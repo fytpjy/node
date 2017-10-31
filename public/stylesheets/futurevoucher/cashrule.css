@@ -1,0 +1,38 @@
+body {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+.rule {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  height: auto;
+}
+.rule ul {
+  display: block;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+.rule li {
+  width: 100%;
+  text-align: justify;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 2rem 0;
+}
+.rule li:last-child {
+  border-bottom: none;
+}
+.rule li h1 {
+  font-size: 1.6rem;
+  line-height: 2.18;
+  color: #2e2e2e;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+.rule li p {
+  font-size: 1.2rem;
+  line-height: 2;
+  color: #787878;
+}

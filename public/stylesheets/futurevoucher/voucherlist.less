@@ -1,0 +1,158 @@
+body{
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+.listBox{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    .rule{
+        float: right;
+        padding: 2rem 1.5rem;
+        a{
+            font-size: 1.2rem;
+            color: #999;
+            padding-left: 2rem;
+            line-height: 1.2;
+            background: url("http://media.youshu.cc/readwith/media/picture/59afe7682b0a6.png") left center no-repeat;
+            background-size: auto 100%;
+        }
+    }
+}
+.voucherBox{
+    width: 100%;
+    padding: 0 1.5rem 6rem;
+    box-sizing: border-box;
+}
+.voucher{
+    width: 100%;
+    background-image: url("http://media.youshu.cc/readwith/media/picture/59afc62cebd8a.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    &:after{
+        content: '';
+        padding-top:39.13%;
+        display: block;
+    }
+    .type{
+        width: 20%;
+        height: 100%;
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-image: url("http://media.youshu.cc/readwith/media/picture/59afcca99f27e.png");
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position-y: 0;
+        text-indent: -9999px;
+        color: #fff;
+        &.type1{
+            background-position-x: 0%;
+        }
+        &.type2{
+            background-position-x: 33.33%;
+        }
+        &.type3{
+            background-position-x: 66.66%;
+        }
+        &.type4{
+            background-position-x: 100%;
+        }
+    }
+    .content{
+        width: 80%;
+        height: 100%;
+        box-sizing: border-box;
+        position: absolute;
+        left: 20%;
+        top: 0;
+    }
+    .cont{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        position: relative;
+        .left{
+            position: absolute;
+            left: 0.8rem;
+            top: 0.8rem;
+            box-sizing: border-box;
+            width: auto;
+            height: auto;
+            font-size: 1.1rem;
+            line-height: 1;
+            padding: 0.2rem 0.3rem;
+            border: 1px dashed #fff;
+            color: #fff;
+            display: block;
+            border-radius: 0.2rem;
+        }
+        .right{
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1;
+            color: #fff;
+        }
+        .intro{
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform:translateY(-50%);
+        }
+        .money{
+            font-size: 2rem;
+            line-height: 1;
+            color: #fff;
+            .price{
+                font-family:Impact,fantasy,Helvetica;
+                font-size: 5.5rem;
+                font-weight: bold;
+            }
+        }
+        .moneyOff{
+            font-size: 2.1rem;
+            color: #fff;
+            line-height: 1.6;
+            font-weight: bold;
+        }
+        .course{
+            font-size: 2.1rem;
+            color: #fff;
+            line-height: 2.5rem;
+            max-height: 5rem;
+            padding: 0 4.2rem;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        .expiryDate{
+            font-size: 1.1rem;
+            color: #fff;
+            line-height: 1.8;
+        }
+    }
+    .state{
+        position: absolute;
+        bottom: -1.2rem;
+        right: -0.5rem;
+        width: 5.6rem;
+        height: 5.6rem;
+        display: block;
+        box-sizing: border-box;
+        img{
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+}

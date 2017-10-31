@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://media.youshu.cc/static/css/style.css"/>
+    <link rel="stylesheet" href="/napi/stylesheets/futurevoucher/activecash.css"/>
+    <link rel="stylesheet" href="/napi/stylesheets/alertBox.css"/>
+    <script type="text/javascript">
+        (function(){
+            function resizeBaseFontSize(){
+                var rootHtml = document.documentElement,
+                    deviceWidth = rootHtml.clientWidth;
+                if(deviceWidth > 800){
+                    deviceWidth = 800;
+                }
+                rootHtml.style.fontSize = deviceWidth /37.5 + "px";
+            }
+            resizeBaseFontSize();
+            window.addEventListener("resize", resizeBaseFontSize, false);
+            window.addEventListener("orientationchange", resizeBaseFontSize, false);
+        })();
+    </script>
+    <style>
+        .cf99 {
+            background-color: #f99b2d;
+        }
+        .ccc {
+            background-color: #ccc;
+        }
+        .f57 {
+            background-color: #f57060;
+        }
+
+    </style>
+    <title>激活兑换码</title>
+</head>
+<body>
+<section class="topBox">
+    <label class="code"><input type="text"  name="coupon_code" placeholder="请输入兑换码"></label>
+    <div class="voucherBox">
+        <div class="voucher" style="display: none;">
+        <!--<div class="voucher" style="background-color: #ccc">-->
+            <!--
+            type1:商品专用券
+            type2:充值券
+            type3:满减券
+            type4:课程专用
+            -->
+            <p class="type" style="display: none;">充值券</p>
+            <div class="content">
+                <div class="cont" style="display: none;">
+                    <label class="left">课程</label>
+                    <label class="right">思维训练课</label>
+                    <div class="intro">
+                        <p class="money"><span class="price">100</span>元</p>
+                        <p class="course">用得上的商业课用得上的商业课用得上的商业课</p>
+                        <p class="expiryDate">有效期至：2017-08-25</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btnBox">
+        <button class="ackButton">确认</button>
+    </div>
+    <p class="jumpRule"><a href="/napi/futurevoucher/cashrule">兑换规则</a></p>
+</section>
+<footer class="belowBox">
+    <aside>
+        <h2>提示</h2>
+        <p class="desc">兑换码兑换成功后，请打开有书共读APP查看 <br>所兑换的商品是否生效。 <br>如有问题，请联系有书官方客服。 <br>客服电话：01080697038 <br>客服邮箱：hi@youshu.cc</p>
+    </aside>
+</footer>
+<div class="alertBox alertBox2" style="display: none">
+    <div class="alert-box">
+        <p class="close"><img src="http://media.youshu.cc/readwith/media/picture/591e6dc7d63bd.jpg" alt=""></p>
+        <p class="tips">恭喜您，加入成功</p>
+        <div class="centerBtnBox">
+            <p class="bigBtn lineGreen">确定</p>
+        </div>
+    </div>
+</div>
+<script src="/napi/javascripts/jquery.min.js"></script>
+<script>
+
+function formatDate(datatime) {
+    if(datatime){
+        var date = new Date(parseInt(datatime*1000));
+        var year=date.getFullYear();
+        var month=date.getMonth()+1;
+        var dateD=date.getDate();
+        return year + "-" + month + "-" + dateD;
+    }
+}
+    $(function(){
+
+        
+
+        function tips(msg) {
+            $(".alertBox").find('.tips').html(msg)
+            $('.alertBox2').show();
+        }
+
+        $('.bigBtn, .microBtn,.close').click(function () {
+            $('.alertBox').hide();
+        });
+
+        $(".ackButton").addClass('active').html('确认');
+        $(".voucherBox").attr("data-type","can")
+        
+        var os = '';
+        if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+            os = 'ios'
+        } else {
+            os = 'android'
+        }
+
+        var user_id = getCookie('HTTP_X_YS_UID');
+        var token = getCookie('HTTP_X_YS_USER_TOKEN');
+
+        if (!user_id) {
+            window.location.href = 'http://readooapi.youshu.cc/FwhWeChat/entry?msg=WeChatAuth&callback=http://'+window.location.host+'/napi/futurevoucher/activecash'
+        }
+
+
+        var coupon = '';
+        $(".ackButton").click(function(){
+            var val = $("input[name=coupon_code]").val();
+            if (!val) {
+                tips('请输入兑换码');
+                return
+            }
+            
+            var self = $(this);
+            console.log($(".voucherBox").attr('data-type'))
+            var type = $(".voucherBox").attr('data-type');
+            console.log(type)
+            switch (type) {
+
+                case "can":
+                    var code = $("input[name=coupon_code]").val();
+                    $.ajax({
+                        url: 'http://readooapi.youshu.cc/Coupon/getCouponInfo?coupon_code=' + code,
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function(res) {
+                            console.log(res)
+                            
+                            if (res.code ==1) {
+                                var data = res.data.coupon_data;
+                                coupon = JSON.stringify(res.data.coupon_data)
+                                switch (data.coupon_type) {
+                                    case "充值券":
+                                        $(".type").addClass("type2").show();
+                                        break;
+                                    case "商品专用券":
+                                        $(".type").addClass("type1").show();
+
+                                        break;
+                                    case "满减券":
+                                        $(".type").addClass("type3").show();
+
+                                        break;
+                                    default:
+                                        
+                                        break;
+                                }
+                                if (data.coupon_label_type == 'label') {
+                                    $(".cont").find(".course").html(data.coupon_label)
+                                    $(".cont").find(".money").hide();
+                                } else if (data.coupon_label_type == 'money') {
+                                    $(".cont").find(".price").html(data.coupon_label)
+                                    $(".cont").find(".course").hide();
+                                }
+
+                                if (data.type == "10" || data.type == "50" || data.type == "60") {
+                                    $(".voucher").addClass('cf99')
+                                } else {
+                                    $(".voucher").addClass('f57')
+                                }
+
+                                if (data.product_type != "") {
+                                    $(".cont").find(".left").html(data.product_type)
+                                } else {
+                                    $(".cont").find(".left").hide();
+                                }
+
+                                if (data.product_label != "") {
+                                    $(".cont").find(".right").html(data.product_label)
+                                } else {
+                                    $(".cont").find(".right").hide();
+                                }
+
+                                $(".cont").show().find(".expiryDate").html('有效期至：'+formatDate(data.expiration_date))
+                                $(".voucher").show();
+                                self.html("确认兑换")
+                                $(".voucherBox").attr("data-type","checked")
+                            } else {
+                                tips(res.msg)
+                            }
+                        }
+                    })
+                    break;
+                case "checked":
+                    var code = $("input[name=coupon_code]").val();
+                    $.ajax({
+                        url: 'http://readooapi.youshu.cc/Coupon/exchangeCouponCode',
+                        type: 'POST',
+                        data: {'coupon_code': code,'user_id': user_id,'os':os},
+                        dataType: 'json',
+                        success: function(res) {
+                            console.log(res)
+                            
+                            if (res.code ==1) {
+                                location.href = '/napi/futurevoucher/success?coupon=' + encodeURIComponent(coupon);
+                            } else {
+                                tips(res.msg)
+                            }
+                        }
+                    })
+                    break;
+                default:
+                    
+                    break;
+            }
+
+        })
+    })
+function getCookie(c_name) {
+    if (document.cookie.length>0){ 
+        var c_start=document.cookie.indexOf(c_name + "=")
+        if (c_start!=-1){ 
+            c_start=c_start + c_name.length+1 
+            var c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+        } 
+    }
+    return ""
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

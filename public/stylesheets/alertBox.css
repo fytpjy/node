@@ -1,0 +1,706 @@
+.buttonBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.5rem;
+  font-size: 1.4rem;
+}
+.buttonBox .button {
+  height: 3.6rem;
+  background: #13bf68;
+  text-align: center;
+  color: #fff;
+  line-height: 3.6rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.cl {
+  zoom: 1;
+}
+.cl:after {
+  content: ' ';
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  display: block;
+  overflow: hidden;
+}
+.cl .lf {
+  float: left;
+}
+.cl .rt {
+  float: right;
+}
+.alertBox {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  box-sizing: border-box;
+}
+/*.alert-box1{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 80%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    p.tips{
+        font-size: 2rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 3rem 1.5rem 2rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .btnBox{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 1.5rem 2rem;
+        p.btn{
+            background: @bgBtn;
+            width: 100%;
+            line-height: 3.6rem;
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            &:active{
+                background: darken(@bgBtn,5%);
+            }
+        }
+    }
+}
+
+.alert-box2{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 80%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    overflow: hidden;
+    p.tips{
+        font-size: 2rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 3rem 1.5rem 2rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .btnBox{
+        width: 100%;
+        box-sizing: border-box;
+        p.btn{
+            background: @bgBtn;
+            width: 100%;
+            line-height: 4rem;
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem;
+            &:active{
+                background: darken(@bgBtn,5%);
+            }
+        }
+    }
+}
+
+.alert-box3{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 80%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    p.tips{
+        font-size: 2rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 3rem 1.5rem 2rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .close{
+        float: right;
+        position: relative;
+        right: -1.2rem;
+        margin-top: -1.2rem;
+        img{
+            display: block;
+            border-radius: 50%;
+            width: 2.8rem;
+            height: 2.8rem;
+            box-sizing: border-box;
+            border: 2px solid #fff;
+        }
+    }
+    .btnBox{
+        width: 100%;
+        box-sizing: border-box;
+        p.btn{
+            background: @bgBtn;
+            width: 100%;
+            line-height: 4rem;
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem;
+            border-bottom-left-radius: 5px ;
+            border-bottom-right-radius: 5px ;
+            &:active{
+                background: darken(@bgBtn,5%);
+            }
+        }
+    }
+}
+
+.alert-box4{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 80%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    p.tips{
+        font-size: 2rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 3rem 1.5rem 2rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .close{
+        float: right;
+        position: relative;
+        right: -1.2rem;
+        margin-top: -1.2rem;
+        img{
+            display: block;
+            border-radius: 50%;
+            width: 2.8rem;
+            height: 2.8rem;
+            box-sizing: border-box;
+            border: 2px solid #fff;
+        }
+    }
+    .btnBox{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 1.5rem 2rem;
+        p.btn{
+            background: @bgBtn;
+            width: 100%;
+            line-height: 3.6rem;
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            &:active{
+                background: darken(@bgBtn,5%);
+            }
+        }
+    }
+}
+
+.alert-box5{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 80%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    p.tips{
+        font-size: 2rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 3rem 1.5rem 2rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .close{
+        float: right;
+        position: relative;
+        right: -1.2rem;
+        margin-top: -1.2rem;
+        img{
+            display: block;
+            border-radius: 50%;
+            width: 2.8rem;
+            height: 2.8rem;
+            box-sizing: border-box;
+            border: 2px solid #fff;
+        }
+    }
+    .btnBox{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 2rem 2rem;
+        p.microBtn{
+            width: 45%;
+            line-height: 3.6rem;
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            &.cancel{
+                background: @red;
+                 &:active{
+                background: darken(@red,5%);
+            }
+            }
+            &.ensure{
+                background: @bgBtn;
+                 &:active{
+                background: darken(@bgBtn,5%);
+            }
+            }
+           
+        }
+    }
+}
+
+.alert-box6{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 80%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    p.tips{
+        font-size: 2rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 4rem 1.5rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+.alert-box7{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 60%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    p.tips{
+        font-size: 2rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 3rem 1.5rem 2rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .close{
+        float: right;
+        position: relative;
+        right: -1.2rem;
+        margin-top: -1.2rem;
+        img{
+            display: block;
+            border-radius: 50%;
+            width: 2.8rem;
+            height: 2.8rem;
+            box-sizing: border-box;
+            border: 2px solid #fff;
+        }
+    }
+    .btnBox{
+        width: 100%;
+        box-sizing: border-box;
+        p.bigBtn{
+            width: 100%;
+            line-height: 4rem;
+            color: @bgBtn;
+            text-align: center;
+            font-size: 1.5rem;
+            border-top: 1px solid #e6e6e6;
+            &:active{
+                box-shadow:inset  0 0 0.4rem rgba(0,0,0,0.2);
+            }
+        }
+    }
+}
+
+.alert-box8{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 80%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    p.tips{
+        font-size: 2rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 3rem 1.5rem 2rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .close{
+        float: right;
+        position: relative;
+        right: -1.2rem;
+        margin-top: -1.2rem;
+        img{
+            display: block;
+            border-radius: 50%;
+            width: 2.8rem;
+            height: 2.8rem;
+            box-sizing: border-box;
+            border: 2px solid #fff;
+        }
+    }
+    .btnBox{
+        width: 100%;
+        box-sizing: border-box;
+        p.microBtn{
+            width: 49.99%;
+            line-height: 3.6rem;
+            text-align: center;
+            font-size: 1.5rem;
+            box-sizing: border-box;
+            border-top: 1px solid #e6e6e6;
+            &.cancel{
+                color: @red;
+                border-right: 1px solid #e6e6e6;
+                &:active{
+                    box-shadow:inset  0 0 0.4rem rgba(0,0,0,0.2);
+                }
+            }
+            &.ensure{
+                color: @bgBtn;
+                &:active{
+                    box-shadow:inset  0 0 0.4rem rgba(0,0,0,0.2);
+                }
+            }
+            
+        }
+    }
+}
+
+.alert-box9{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 80%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    p.tips{
+        font-size: 2rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 3rem 1.5rem 2rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .btnBox{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 1.5rem 2rem;
+        p.btn{
+            background: @orange;
+            width: 40%;
+            line-height: 3.6rem;
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            margin: 0 auto;
+            &:active{
+                background: darken(@orange,5%);
+            }
+        }
+    }
+}
+.alert-box10{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-5%0);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 80%;
+    background: #fff;
+    max-width: 40rem;
+    min-width: 280px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    p.tipTit{
+        font-size: 1.5rem;
+        line-height: 2;
+        color: #333;
+        font-weight: 600;
+        padding: 1.5rem 1.5rem 1rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    p.tipText{
+        font-size: 1.4rem;
+        color: #999;
+        line-height: 2;
+        padding: 0 1.5rem;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .btnBox{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 1.5rem 2rem;
+        p.btn{
+            background: @orange;
+            width: 40%;
+            line-height: 3.6rem;
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            margin: 0 auto;
+            &:active{
+                background: darken(@orange,5%);
+            }
+        }
+    }
+}
+*/
+.alert-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -5% 0);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 80%;
+  background: #fff;
+  max-width: 40rem;
+  min-width: 280px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.alert-box p.close {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.alert-box p.close img {
+  position: absolute;
+  top: -1.2rem;
+  right: -1.2rem;
+  display: block;
+  border-radius: 50%;
+  width: 2.8rem;
+  height: 2.8rem;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+}
+.alert-box p.tipTit {
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #333;
+  font-weight: 600;
+  padding: 1.5rem 1.5rem 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+.alert-box p.tipText {
+  font-size: 1.4rem;
+  color: #999;
+  line-height: 2;
+  padding: 0 1.5rem;
+  padding-bottom: 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+.alert-box p.tips {
+  font-size: 2rem;
+  line-height: 2;
+  color: #333;
+  font-weight: 600;
+  padding: 3rem 1.5rem 2rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+.alert-box .centerBtnBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem 1.5rem 2rem;
+}
+.alert-box .centerBtnBox p.bigBtn {
+  width: 100%;
+  line-height: 3.6rem;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.alert-box .bottomBtnBox {
+  width: 100%;
+  box-sizing: border-box;
+}
+.alert-box .bottomBtnBox p.bigBtn {
+  width: 100%;
+  line-height: 3.6rem;
+  text-align: center;
+  font-size: 1.5rem;
+  border-top: 1px solid #e6e6e6;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-sizing: border-box;
+}
+.alert-box .dualCenterBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem 1.5rem 2rem;
+}
+.alert-box .dualCenterBox .microBtn {
+  width: 45%;
+  line-height: 3.6rem;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.alert-box .dualBottomBox {
+  width: 100%;
+  line-height: 3.6rem;
+  text-align: center;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  border-top: 1px solid #e6e6e6;
+}
+.alert-box .dualBottomBox .microBtn {
+  width: 49.99%;
+  line-height: 3.6rem;
+  text-align: center;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+}
+.alert-box .dualBottomBox .microBtn:first-child {
+  border-right: 1px solid #e6e6e6;
+}
+.bgGreen {
+  background: #13bf68;
+  color: #fff;
+}
+.bgGreen:active {
+  background: #11a85b;
+}
+.lineGreen {
+  color: #13bf68;
+  border: 1px solid #13bf68;
+}
+.lineGreen:active {
+  box-shadow: inset 0 0 0.4rem rgba(0, 0, 0, 0.2);
+}
+.green {
+  color: #13bf68;
+}
+.green:active {
+  box-shadow: inset 0 0 0.4rem rgba(0, 0, 0, 0.2);
+}
+.bgRed {
+  background: #df262b;
+  color: #fff;
+}
+.bgRed:active {
+  background: #cd1e23;
+}
+.lineRed {
+  color: #df262b;
+  border: 1px solid #df262b;
+}
+.lineRed:active {
+  box-shadow: inset 0 0 0.4rem rgba(0, 0, 0, 0.2);
+}
+.green {
+  color: #df262b;
+}
+.green:active {
+  box-shadow: inset 0 0 0.4rem rgba(0, 0, 0, 0.2);
+}

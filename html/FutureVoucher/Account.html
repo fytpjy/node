@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://media.youshu.cc/static/css/style.css"/>
+    <link rel="stylesheet" href="/napi/stylesheets/futurevoucher/account.css"/>
+    <script type="text/javascript">
+        (function(){
+            function resizeBaseFontSize(){
+                var rootHtml = document.documentElement,
+                    deviceWidth = rootHtml.clientWidth;
+                if(deviceWidth > 800){
+                    deviceWidth = 800;
+                }
+                rootHtml.style.fontSize = deviceWidth /37.5 + "px";
+            }
+            resizeBaseFontSize();
+            window.addEventListener("resize", resizeBaseFontSize, false);
+            window.addEventListener("orientationchange", resizeBaseFontSize, false);
+        })();
+    </script>
+    <title>我的账户</title>
+</head>
+<body>
+<main class="main">
+    <section class="topBox">
+        <div class="userBox">
+            <img class="userImg" src="" alt="">
+            <p class="userName">大王叫我来巡山</p>
+            <p class="userID">ID：643712</p>
+        </div>
+        <div class="barBox">
+            <p class="balance">余额：<span>4元</span></p>
+            <p class="cardStock">卡劵：<span>2张</span></p>
+        </div>
+    </section>
+    <section class="belowBox">
+        <div class="moneyBox">
+            <div class="money"><p>10元</p></div>
+            <div class="money active"><p>50元</p></div>
+            <div class="money"><p>100元</p></div>
+            <div class="money"><p>200元</p></div>
+        </div>
+        <div class="btnBox">
+            <button class="payBtn">充值</button>
+            <a class="activeBtn" href="ActiveCash.html">卡券兑换</a>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <p><small>客服电话：010-80697038</small>|<small><a href="CashRule.html">使用规则</a></small></p>
+</footer>
+</body>
+</html>
